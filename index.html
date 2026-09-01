@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active VPN Premium - Download & Guide</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Padauk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-start p-4 sm:p-8 selection:bg-emerald-500 selection:text-white">
+
+    <!-- Ambient Glow Effects -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-72 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-xl flex flex-col items-center gap-6 my-auto">
+
+        <!-- Top Download Card -->
+        <div class="w-full bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+            
+            <!-- App Logo -->
+            <div class="relative mb-5 group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
+                <!--  -->
+                <img 
+                    src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/1787574190521.png" 
+                    alt="Active VPN Logo" 
+                    referrerpolicy="no-referrer"
+                    onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/1787574190521.png')"
+                    class="relative w-24 h-24 rounded-2xl object-cover bg-slate-800 border border-slate-700/60 shadow-inner"
+                />
+            </div>
+
+            <!-- Title & Version -->
+            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
+                Active VPN Premium
+            </h1>
+            
+            <div class="flex items-center gap-2 mb-4">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    ဗားရှင်း 1.0 (APK)
+                </span>
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-400 border border-slate-700">
+                    Android
+                </span>
+            </div>
+
+            <!-- Real Download Counter Badge (No Fake Data) -->
+            <div class="mb-5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300 shadow-inner">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                <span>ဒေါင်းလုဒ်အကြိမ်ရေ: <strong id="downloadCountText" class="text-emerald-400 font-bold">ရယူနေသည်...</strong></span>
+            </div>
+
+            <!-- Dynamic Download Action Button -->
+            <button 
+                id="startDownloadBtn"
+                onclick="handleDownloadClick()" 
+                class="w-full group relative flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold py-4 px-6 rounded-2xl transition-all duration-200 shadow-lg shadow-emerald-950/50 hover:shadow-emerald-500/20 active:scale-[0.98]"
+            >
+                <svg id="btnIconDownload" class="w-6 h-6 transition-transform duration-200 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                <svg id="btnIconSpinner" class="w-6 h-6 animate-spin hidden text-slate-950" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span id="btnText" class="text-base tracking-wide">APK ဒေါင်းလုဒ်ဆွဲရန်</span>
+            </button>
+
+            <!-- Live Download Progress Bar Section (Real-time %) -->
+            <div id="progressSection" class="w-full mt-4 hidden text-left bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
+                <div class="flex justify-between items-center text-xs font-semibold mb-2">
+                    <span id="progressStatus" class="text-slate-300 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        ဒေါင်းလုဒ်ဆွဲနေသည်...
+                    </span>
+                    <span id="progressPercent" class="text-emerald-400 text-sm font-bold">0%</span>
+                </div>
+
+                <!-- Bar Track -->
+                <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
+                    <div id="progressBarFill" class="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 h-full rounded-full w-0 transition-all duration-150 shadow-md"></div>
+                </div>
+
+                <div class="flex justify-between items-center text-[11px] text-slate-400 mt-2">
+                    <span id="progressSize">0 MB / 0 MB</span>
+                    <span class="text-amber-400 text-[10px]">* ၃ မိနစ်အတွင်း ဒေါင်းလုဒ်ပြီးပါမည်</span>
+                </div>
+            </div>
+
+            <!-- Secondary Actions -->
+            <div class="w-full mt-4 flex items-center justify-between gap-2 pt-4 border-t border-slate-800/80">
+                <button 
+                    onclick="copyShareLink()" 
+                    class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-800/60 hover:bg-slate-800 text-xs font-medium text-slate-300 border border-slate-700/50 transition-colors"
+                >
+                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                    <span id="copyBtnText">ဝက်ဘ်ဆိုက် လင့်ခ် ကူးယူရန်</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Screenshots Section (ပုံ ၂ ပုံ) -->
+        <div class="w-full bg-slate-900/60 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl">
+            <h2 class="text-base font-semibold text-slate-200 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                App ပုံစံနမူနာများ
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-950 flex items-center justify-center min-h-[220px]">
+                    <!--  -->
+                    <img 
+                        src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/active1.png" 
+                        alt="Active VPN Screenshot 1" 
+                        referrerpolicy="no-referrer"
+                        onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/active1.png')"
+                        class="w-full h-auto object-cover hover:scale-105 transition duration-300 rounded-2xl"
+                    />
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-950 flex items-center justify-center min-h-[220px]">
+                    <!--  -->
+                    <img 
+                        src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/active2.png" 
+                        alt="Active VPN Screenshot 2" 
+                        referrerpolicy="no-referrer"
+                        onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/active2.png')"
+                        class="w-full h-auto object-cover hover:scale-105 transition duration-300 rounded-2xl"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Guide Section (ဒေါင်းလုဒ်ဆွဲနည်း & Premium အသုံးပြုနည်း လမ်းညွှန် ဗီဒီယို) -->
+        <div class="w-full bg-slate-900/60 border border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl mb-6 flex flex-col items-center">
+            <div class="w-full flex items-center justify-between mb-4">
+                <h2 class="text-base font-semibold text-slate-200 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    ဒေါင်းလုဒ်နှင့် အသုံးပြုနည်း ဗီဒီယို
+                </h2>
+                <span class="text-xs bg-slate-800 text-emerald-400 font-medium px-2.5 py-1 rounded-full border border-slate-700">
+                    ၃ မိနစ် ၃၇ စက္ကန့်
+                </span>
+            </div>
+
+            <!-- Mobile-Optimized Portrait Video Player -->
+            <div class="w-full max-w-[320px] aspect-[9/16] rounded-2xl overflow-hidden border border-slate-700/80 bg-black shadow-2xl relative flex items-center justify-center">
+                <video 
+                    controls 
+                    playsinline
+                    preload="metadata"
+                    class="w-full h-full object-contain rounded-2xl bg-black"
+                >
+                    <source src="https://github.com/VPS-SCRIPT/ActiveVPN-APK/releases/download/v1.0-video/guide.mp4" type="video/mp4">
+                    သင့်ဖုန်း သို့မဟုတ် Browser သည် Video ဖွင့်ခြင်းကို မထောက်ပံ့ပါ။
+                </video>
+            </div>
+            
+            <p class="text-xs text-slate-400 mt-3 text-center leading-relaxed">
+                * ဗီဒီယိုကို ကြည့်ရှု၍ APK ဒေါင်းလုဒ်လုပ်ပုံနှင့် Premium အကောင့် ချိတ်ဆက်အသုံးပြုနည်းကို လွယ်ကူစွာ လေ့လာနိုင်ပါသည်။
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Status Toast Modal -->
+    <div id="toast" class="hidden fixed bottom-6 bg-emerald-500 text-slate-950 text-xs font-bold px-5 py-2.5 rounded-full shadow-2xl transition-opacity duration-300 z-50">
+        လင့်ခ် ကူးယူပြီးပါပြီ!
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // CONFIGURATION: Cloudflare Worker API URL (Worker Domain ကို ဤနေရာတွင် ထည့်ပါ)
+        // ဥပမာ: "https://activevpn-download.your-subdomain.workers.dev"
+        const WORKER_API_URL = window.location.origin;
+
+        let isDownloading = false;
+
+        // Fetch EXACT Download Stats from Worker (No Fake Mock Numbers)
+        async function fetchExactDownloadStats() {
+            const countEl = document.getElementById("downloadCountText");
+            try {
+                const res = await fetch(`${WORKER_API_URL}/api/stats`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const realCount = Number(data.download_count ?? 0);
+                    countEl.textContent = realCount.toLocaleString() + " ကြိမ်";
+                    return;
+                }
+            } catch (e) {
+                console.warn("Could not fetch real download stats from worker:", e);
+            }
+            // အကယ်၍ Worker မချိတ်ဆက်ရသေးပါက 0 အစစ်ကိုသာ ပြသမည်
+            countEl.textContent = "၀ ကြိမ်";
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            fetchExactDownloadStats();
+        });
+
+        // Handle Real Stream Download with Live % Progress
+        async function handleDownloadClick() {
+            if (isDownloading) return;
+
+            const btn = document.getElementById("startDownloadBtn");
+            const btnText = document.getElementById("btnText");
+            const iconDownload = document.getElementById("btnIconDownload");
+            const iconSpinner = document.getElementById("btnIconSpinner");
+            const progressSection = document.getElementById("progressSection");
+            const progressBarFill = document.getElementById("progressBarFill");
+            const progressPercent = document.getElementById("progressPercent");
+            const progressStatus = document.getElementById("progressStatus");
+            const progressSize = document.getElementById("progressSize");
+
+            try {
+                isDownloading = true;
+                btn.disabled = true;
+                iconDownload.classList.add("hidden");
+                iconSpinner.classList.remove("hidden");
+                btnText.textContent = "၃ မိနစ်သုံး လင့်ခ် ထုတ်ယူနေသည်...";
+                progressSection.classList.remove("hidden");
+
+                // 1. Worker မှ ၃ မိနစ်သက်တမ်းရှိ တခါသုံး download token လင့်ခ် တောင်းယူခြင်း
+                const tokenRes = await fetch(`${WORKER_API_URL}/api/generate-link`, { method: "POST" });
+                if (!tokenRes.ok) {
+                    throw new Error("Worker link generation failed.");
+                }
+
+                const tokenData = await tokenRes.json();
+                const downloadUrl = tokenData.download_url;
+
+                btnText.textContent = "APK ဒေါင်းလုဒ် ဆွဲနေပါသည်...";
+                progressStatus.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> ဖိုင်ကို ဒေါင်းလုဒ်ဆွဲနေသည်...';
+
+                // 2. Stream Data နှင့် ရာခိုင်နှုန်း တိကျစွာ တွက်ချက်ခြင်း
+                const response = await fetch(downloadUrl);
+                if (!response.ok) {
+                    const errTxt = await response.text();
+                    throw new Error(errTxt || "ဒေါင်းလုဒ် မအောင်မြင်ပါ။");
+                }
+
+                const contentLengthHeader = response.headers.get("Content-Length");
+                const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;
+                
+                const reader = response.body.getReader();
+                let receivedBytes = 0;
+                const chunks = [];
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    chunks.push(value);
+                    receivedBytes += value.length;
+
+                    if (totalBytes > 0) {
+                        const percent = Math.min(100, Math.round((receivedBytes / totalBytes) * 100));
+                        progressBarFill.style.width = percent + "%";
+                        progressPercent.textContent = percent + "%";
+                        
+                        const mbLoaded = (receivedBytes / (1024 * 1024)).toFixed(1);
+                        const mbTotal = (totalBytes / (1024 * 1024)).toFixed(1);
+                        progressSize.textContent = `${mbLoaded} MB / ${mbTotal} MB`;
+                    } else {
+                        const mbLoaded = (receivedBytes / (1024 * 1024)).toFixed(1);
+                        progressSize.textContent = `${mbLoaded} MB ဒေါင်းလုဒ်ရရှိပြီး`;
+                        progressBarFill.style.width = "85%";
+                        progressPercent.textContent = "...";
+                    }
+                }
+
+                // 3. ဒေါင်းလုဒ် ပြီးဆုံးမှုနှင့် ဖိုင်သိမ်းဆည်းခြင်း
+                progressBarFill.style.width = "100%";
+                progressPercent.textContent = "100%";
+                progressStatus.innerHTML = '✓ ဒေါင်းလုဒ် ပြီးဆုံးပါပြီ!';
+                btnText.textContent = "ဒေါင်းလုဒ် အောင်မြင်ပါသည် ✓";
+
+                const blob = new Blob(chunks, { type: "application/vnd.android.package-archive" });
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = blobUrl;
+                a.download = "Active_VPN_Premium.apk";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+
+                // ဒေါင်းလုဒ်ပြီးသွားသည်နှင့် အမှန်တကယ်တိုးသွားသော Count ကို ချက်ချင်း Update ပြုလုပ်ခြင်း
+                fetchExactDownloadStats();
+
+                setTimeout(() => {
+                    btnText.textContent = "ထပ်မံ ဒေါင်းလုဒ်ဆွဲရန်";
+                    btn.disabled = false;
+                    iconDownload.classList.remove("hidden");
+                    iconSpinner.classList.add("hidden");
+                    isDownloading = false;
+                }, 3000);
+
+            } catch (err) {
+                console.error(err);
+                progressStatus.innerHTML = `<span class="text-rose-400">${err.message || "ဒေါင်းလုဒ် ပြုလုပ်၍ မရပါ"}</span>`;
+                btnText.textContent = "ပြန်လည် ကြိုးစားရန်";
+                btn.disabled = false;
+                iconDownload.classList.remove("hidden");
+                iconSpinner.classList.add("hidden");
+                isDownloading = false;
+            }
+        }
+
+        // Image Fallback
+        function handleImgError(imgElement, fallbackUrl) {
+            if (!imgElement.dataset.retried) {
+                imgElement.dataset.retried = "true";
+                imgElement.src = fallbackUrl;
+            }
+        }
+
+        // Share Link
+        function copyShareLink() {
+            var tempInput = document.createElement("input");
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("ဝက်ဘ်ဆိုက်လင့်ခ် ကူးယူပြီးပါပြီ!");
+        }
+
+        function showToast(msg) {
+            var toast = document.getElementById("toast");
+            var btnText = document.getElementById("copyBtnText");
+            if (msg) toast.textContent = msg;
+            
+            toast.classList.remove("hidden");
+            btnText.textContent = "ကူးယူပြီး ✓";
+
+            setTimeout(function() {
+                toast.classList.add("hidden");
+                btnText.textContent = "ဝက်ဘ်ဆိုက် လင့်ခ် ကူးယူရန်";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
