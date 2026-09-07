@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="my" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active VPN Premium - Download & Guide</title>
+    <!-- Tailwind CSS with Dark Mode Support -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@700&family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Padauk', 'Kanit', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 1. ပုံများနှင့် Button ဘောင်တွင် မီးအလင်းတန်း လှည့်ပတ်ပြေးနေသော Animation (Border Light Beam) */
+        @keyframes spin-beam {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .neon-border-beam {
+            position: relative;
+            padding: 2.5px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+        }
+
+        .neon-border-beam::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                transparent 50deg,
+                #10b981 120deg,
+                #06b6d4 150deg,
+                #3b82f6 180deg,
+                transparent 220deg,
+                transparent 360deg
+            );
+            animation: spin-beam 3.5s linear infinite;
+            z-index: 0;
+        }
+
+        .neon-border-beam-alt::before {
+            animation-duration: 3.2s;
+            animation-direction: reverse;
+        }
+
+        .neon-border-inner {
+            position: relative;
+            z-index: 1;
+            border-radius: calc(1.25rem - 2px);
+            overflow: hidden;
+        }
+
+        /* 2. Download Button အတွက် သီးသန့် Neon Border Beam & Pulsing Glow */
+        .neon-btn-beam {
+            position: relative;
+            padding: 2.5px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 0 28px -4px rgba(16, 185, 129, 0.4), 0 0 16px -2px rgba(6, 182, 212, 0.3);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .neon-btn-beam::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                transparent 45deg,
+                #10b981 110deg,
+                #06b6d4 140deg,
+                #3b82f6 170deg,
+                transparent 210deg,
+                transparent 360deg
+            );
+            animation: spin-beam 2.8s linear infinite;
+            z-index: 0;
+        }
+
+        .neon-btn-beam:hover {
+            box-shadow: 0 0 38px 2px rgba(16, 185, 129, 0.65), 0 0 22px 4px rgba(6, 182, 212, 0.5);
+            transform: translateY(-1.5px);
+        }
+
+        @keyframes light-sweep {
+            0% { transform: translateX(-150%) skewX(-25deg); }
+            35%, 100% { transform: translateX(250%) skewX(-25deg); }
+        }
+
+        .btn-shimmer-sweep::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
+            animation: light-sweep 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            pointer-events-none;
+        }
+
+        /* 3. Progress Bar မီးရောင်စင်းပြေး & Percentage Digital Glow Effect */
+        @keyframes progress-stripes-slide {
+            0% { background-position: 0 0; }
+            100% { background-position: 36px 0; }
+        }
+
+        .progress-striped-flow {
+            background-size: 28px 28px;
+            background-image: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.22) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.22) 50%,
+                rgba(255, 255, 255, 0.22) 75%,
+                transparent 75%,
+                transparent
+            );
+            animation: progress-stripes-slide 0.85s linear infinite;
+        }
+
+        .digital-glow-text {
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 10px rgba(52, 211, 153, 0.8), 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        @keyframes laser-glow-blink {
+            0%, 100% { filter: drop-shadow(0 0 8px #34d399) drop-shadow(0 0 16px #06b6d4); }
+            50% { filter: drop-shadow(0 0 14px #10b981) drop-shadow(0 0 24px #22d3ee); }
+        }
+
+        .laser-tip-glow {
+            animation: laser-glow-blink 1.2s infinite alternate;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col items-center justify-start p-4 sm:p-8 selection:bg-emerald-500 selection:text-white relative pb-32">
+
+    <!-- Ambient Glow Effects -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-72 bg-emerald-500/15 dark:bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-xl flex flex-col items-center gap-5 my-auto">
+
+        <!-- Top Header: Website Logo & Name (Left) & Language Dropdown Switch (Right) -->
+        <header class="w-full flex items-center justify-between gap-2 px-1 py-1">
+            
+            <!-- Website Logo & Name / Brand -->
+            <div class="flex items-center gap-2.5">
+                <div class="relative w-9 h-9 rounded-xl overflow-hidden p-0.5 bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-md shadow-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                    <!--  -->
+                    <img 
+                        src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/1787574190521.png" 
+                        alt="Active VPN Logo" 
+                        referrerpolicy="no-referrer"
+                        onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/1787574190521.png')"
+                        class="w-full h-full object-cover rounded-[10px] bg-slate-900"
+                    />
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Active VPN <span class="text-emerald-500 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 ml-0.5 align-middle">PREMIUM</span>
+                    </span>
+                    <span id="txt-headerSub" class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">တရားဝင် ဝက်ဘ်ဆိုက်</span>
+                </div>
+            </div>
+
+            <!-- Language Dropdown Switcher (ညာဘက် အပေါ်ထောင့်) -->
+            <div class="relative" id="langDropdownWrapper">
+                <button 
+                    id="langDropdownBtn"
+                    onclick="toggleLangDropdown()" 
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold shadow-sm hover:border-emerald-500/50 hover:scale-105 active:scale-95 transition-all"
+                    title="ဘာသာစကား ရွေးချယ်ရန်"
+                >
+                    <span id="currentLangFlag" class="text-sm">🇲🇲</span>
+                    <span id="currentLangLabel">မြန်မာ</span>
+                    <svg id="langChevron" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div 
+                    id="langDropdownMenu" 
+                    class="hidden absolute right-0 mt-2 w-36 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-50 p-1.5 backdrop-blur-xl"
+                >
+                    <button onclick="selectLang('my')" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-500 transition">
+                        <span class="flex items-center gap-2"><span>🇲🇲</span> မြန်မာ</span>
+                        <span id="check-my" class="text-emerald-500 font-bold">✓</span>
+                    </button>
+                    <button onclick="selectLang('th')" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-500 transition">
+                        <span class="flex items-center gap-2"><span>🇹🇭</span> ไทย</span>
+                        <span id="check-th" class="hidden text-emerald-500 font-bold">✓</span>
+                    </button>
+                    <button onclick="selectLang('en')" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-500 transition">
+                        <span class="flex items-center gap-2"><span>🇬🇧</span> English</span>
+                        <span id="check-en" class="hidden text-emerald-500 font-bold">✓</span>
+                    </button>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Top Download Card -->
+        <div class="w-full bg-white/95 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center relative overflow-hidden transition-colors">
+            
+            <!-- App Logo (Main) -->
+            <div class="relative mb-5 group">
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 rounded-2xl blur-md opacity-40 group-hover:opacity-75 transition duration-300"></div>
+                <!--  -->
+                <img 
+                    src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/1787574190521.png" 
+                    alt="Active VPN Logo" 
+                    referrerpolicy="no-referrer"
+                    onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/1787574190521.png')"
+                    class="relative w-24 h-24 rounded-2xl object-cover bg-slate-100 dark:bg-slate-800 border border-slate-300/80 dark:border-slate-700/60 shadow-inner"
+                />
+            </div>
+
+            <!-- Title & Version -->
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">
+                Active VPN Premium
+            </h1>
+            
+            <div class="flex items-center gap-2 mb-3">
+                <span id="txt-versionBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    ဗားရှင်း 1.0 (APK)
+                </span>
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                    Android
+                </span>
+            </div>
+
+            <!-- Real Download Counter Badge -->
+            <div class="mb-5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 text-xs text-slate-600 dark:text-slate-300 shadow-inner">
+                <svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+                <span><span id="txt-dlCountLabel">ဒေါင်းလုဒ်အကြိမ်ရေ:</span> <strong id="downloadCountText" class="text-emerald-600 dark:text-emerald-400 font-bold">ရယူနေသည်...</strong></span>
+            </div>
+
+            <!-- Video Guide Buttons Section (Download ခလုတ်အပေါ်တွင် တည်ရှိသည်) -->
+            <div class="w-full mb-5 flex flex-col gap-2.5">
+                <div class="flex items-center gap-1.5 mb-1 px-1">
+                    <svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 6l-5-3.5v7l5-3.5z"/>
+                    </svg>
+                    <span id="txt-videoGuidesHeader" class="text-xs font-bold text-slate-700 dark:text-slate-300 tracking-wide">လမ်းညွှန် ဗီဒီယိုများ (နှိပ်၍ကြည့်ရန်)</span>
+                </div>
+
+                <!-- Video 1: Dtac Social စမတ်နည်း Video -->
+                <button 
+                    onclick="triggerPlanVideo('social')"
+                    class="w-full flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-gradient-to-r dark:from-slate-900/90 dark:to-slate-950/90 hover:bg-cyan-50/80 dark:hover:from-cyan-950/40 dark:hover:to-slate-900/90 border border-slate-200 dark:border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-200 group active:scale-[0.98] shadow-sm hover:shadow-md"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 dark:bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500/20 transition duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div id="txt-vid1Title" class="text-xs font-bold text-slate-800 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition">Dtac Social စမတ်နည်း Video</div>
+                            <div id="txt-vid1Sub" class="text-[10px] text-cyan-600 dark:text-cyan-400/80 font-medium">လိုင်းအား 100+ Mbps ပက်ကေ့ချ်</div>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-cyan-600 dark:text-cyan-400 flex items-center gap-1 bg-cyan-500/10 px-2.5 py-1 rounded-lg border border-cyan-500/20">
+                        <span class="txt-watchBtn">ကြည့်မည်</span>
+                        <svg class="w-3 h-3 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </span>
+                </button>
+
+                <!-- Video 2: Dtac VIU စမတ်နည်း Video -->
+                <button 
+                    onclick="triggerPlanVideo('viu')"
+                    class="w-full flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-gradient-to-r dark:from-slate-900/90 dark:to-slate-950/90 hover:bg-amber-50/80 dark:hover:from-amber-950/40 dark:hover:to-slate-900/90 border border-slate-200 dark:border-amber-500/30 hover:border-amber-400/60 transition-all duration-200 group active:scale-[0.98] shadow-sm hover:shadow-md"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div id="txt-vid2Title" class="text-xs font-bold text-slate-800 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-300 transition">Dtac VIU စမတ်နည်း Video</div>
+                            <div id="txt-vid2Sub" class="text-[10px] text-amber-600 dark:text-amber-400/80 font-medium">စမတ်ခ 79 ဘတ် သက်သာပက်ကေ့ချ်</div>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
+                        <span class="txt-watchBtn">ကြည့်မည်</span>
+                        <svg class="w-3 h-3 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </span>
+                </button>
+
+                <!-- Video 3: မန်ဘာ၀င်နည်းနဲ့ ဒေါင်းလုတ်ဆွဲနည်း Video -->
+                <button 
+                    onclick="triggerPlanVideo('guide')"
+                    class="w-full flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-gradient-to-r dark:from-slate-900/90 dark:to-slate-950/90 hover:bg-emerald-50/80 dark:hover:from-emerald-950/40 dark:hover:to-slate-900/90 border border-slate-200 dark:border-emerald-500/30 hover:border-emerald-400/60 transition-all duration-200 group active:scale-[0.98] shadow-sm hover:shadow-md"
+                >
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="5" y="2" width="14" height="20" rx="3" stroke-width="2"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M10 9l5 3-5 3V9z"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <div id="txt-vid3Title" class="text-xs font-bold text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition">မန်ဘာ၀င်နည်းနဲ့ ဒေါင်းလုတ်ဆွဲနည်း Video</div>
+                            <div id="txt-vid3Sub" class="text-[10px] text-emerald-600 dark:text-emerald-400/80 font-medium">အကောင့်ဖွင့်နည်းနှင့် အသုံးပြုနည်း အပြည့်အစုံ</div>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">
+                        <span class="txt-watchBtn">ကြည့်မည်</span>
+                        <svg class="w-3 h-3 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Dynamic Download Action Button (မီးအလင်းတန်းပြေးနေသော Neon Beam Border) -->
+            <div class="w-full neon-btn-beam group">
+                <button 
+                    id="startDownloadBtn"
+                    onclick="handleDownloadClick()" 
+                    class="w-full relative z-10 flex items-center justify-center gap-3 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 text-white font-extrabold py-4 px-6 rounded-[calc(1.25rem-2.5px)] transition-all duration-300 shadow-xl active:scale-[0.99] overflow-hidden btn-shimmer-sweep"
+                >
+                    <svg id="btnIconDownload" class="w-6 h-6 text-emerald-400 transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <svg id="btnIconSpinner" class="w-6 h-6 animate-spin hidden text-emerald-400" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span id="btnText" class="text-base tracking-wider uppercase font-extrabold bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">APK ဒေါင်းလုဒ်ဆွဲရန်</span>
+                </button>
+            </div>
+
+            <!-- Live Download Progress Bar Section (အလန်းစား Futuristic Neon Effect) -->
+            <div id="progressSection" class="w-full mt-5 hidden text-left bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900/90 dark:to-slate-950/95 p-4 sm:p-5 rounded-2xl border border-emerald-500/30 shadow-2xl shadow-emerald-950/20 backdrop-blur-xl">
+                
+                <!-- Status & Percentage -->
+                <div class="flex justify-between items-center mb-2.5">
+                    <span id="progressStatus" class="text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        <span id="txt-progressStatus">ဖိုင်ကို ဒေါင်းလုဒ်ဆွဲနေသည်...</span>
+                    </span>
+                    <span id="progressPercent" class="digital-glow-text text-emerald-600 dark:text-emerald-300 text-lg font-extrabold tracking-wider">
+                        0%
+                    </span>
+                </div>
+
+                <!-- High-Tech Bar Track -->
+                <div class="w-full bg-slate-200 dark:bg-slate-950/80 h-3.5 rounded-full p-0.5 border border-slate-300 dark:border-slate-700/60 overflow-hidden shadow-inner relative flex items-center">
+                    <div 
+                        id="progressBarFill" 
+                        class="progress-striped-flow bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 h-full rounded-full w-0 transition-all duration-150 shadow-md relative"
+                    >
+                        <div class="laser-tip-glow absolute right-0 top-1/2 -translate-y-1/2 w-2 h-full bg-white rounded-r-full shadow-[0_0_12px_#ffffff]"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-slate-400 mt-2.5">
+                    <span id="progressSize" class="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">0 MB / 0 MB</span>
+                    <span class="text-cyan-600 dark:text-cyan-400 text-[10px] font-medium flex items-center gap-1">
+                        <svg class="w-3 h-3 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span id="txt-linkExpiryNotice">* လင့်ခ်သက်တမ်း ၃ မိနစ်</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Secondary Actions -->
+            <div class="w-full mt-4 flex items-center justify-between gap-2 pt-4 border-t border-slate-200 dark:border-slate-800/80">
+                <button 
+                    onclick="copyShareLink()" 
+                    class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700/50 transition-colors"
+                >
+                    <svg class="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                    <span id="copyBtnText">ဝက်ဘ်ဆိုက် လင့်ခ် ကူးယူရန်</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Recommended SIM Plans Section (DTAC Plans - Video Buttons Removed) -->
+        <div class="w-full bg-white/95 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl transition-colors">
+            <div class="flex items-center gap-2.5 mb-5 pb-3 border-b border-slate-200 dark:border-slate-800">
+                <img 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXIB1stuxiDc1L4kBzwhYIMgrw-_uw78xbw0gX7ob0RA&s=10" 
+                    alt="DTAC Logo" 
+                    class="w-7 h-7 rounded-lg object-contain bg-slate-100 dark:bg-white/10 p-0.5"
+                    onerror="this.style.display='none'"
+                />
+                <div>
+                    <h2 id="txt-plansTitle" class="text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                        DTAC အင်တာနက် ပက်ကေ့ချ်များ
+                    </h2>
+                    <p id="txt-plansSub" class="text-xs text-slate-500 dark:text-slate-400">Active VPN ဖြင့် တွဲဖက်အသုံးပြုရန် အထူးသင့်လျော်သော Plan များ</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Card 1: DTAC SOCIAL PLAN (Recommended) -->
+                <div class="relative bg-slate-50 dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-950 border-2 border-emerald-500/50 rounded-2xl p-5 shadow-lg flex flex-col justify-between overflow-hidden group">
+                    <div class="absolute top-0 right-0">
+                        <span id="txt-socialBadge" class="inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-[10px] font-extrabold px-3 py-1 rounded-bl-xl shadow-md uppercase tracking-wider">
+                            သုံးဖို့ အကြံပြု ⭐
+                        </span>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">DTAC SOCIAL PLAN</h3>
+                                <span id="txt-socialSub" class="text-[11px] text-cyan-600 dark:text-cyan-400 font-medium">Dtac App မှ စမတ်ရန်</span>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Details -->
+                        <div class="bg-white dark:bg-slate-900/90 rounded-xl p-3 border border-slate-200 dark:border-slate-800 space-y-2 mb-3 shadow-sm">
+                            <div class="flex justify-between items-center text-xs">
+                                <span id="txt-social1mLabel" class="text-slate-500 dark:text-slate-400">၁ လ သက်တမ်း:</span>
+                                <span id="txt-social1mVal" class="font-bold text-slate-800 dark:text-white">135 ဘတ်</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span id="txt-social3mLabel" class="text-slate-500 dark:text-slate-400">၃ လ သက်တမ်း:</span>
+                                <span id="txt-social3mVal" class="font-bold text-emerald-600 dark:text-emerald-400">237 ဘတ် (ပိုတန်)</span>
+                            </div>
+                            <div class="pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex justify-between items-center text-xs">
+                                <span id="txt-socialVpnLabel" class="text-slate-600 dark:text-slate-300">VPN ဖိုး 50 ဘတ် ပေါင်း:</span>
+                                <span id="txt-socialTotalVal" class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">~ 130 ဘတ် / လ</span>
+                            </div>
+                        </div>
+
+                        <!-- Speed Badge -->
+                        <div class="flex items-center gap-2 text-xs bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-3 py-2 text-emerald-700 dark:text-emerald-300">
+                            <svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span><span class="txt-speedLabel">လိုင်းအား:</span> <strong id="txt-socialSpeedVal" class="font-bold text-slate-900 dark:text-white">100+ Mbps အထိ ရရှိ</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: DTAC VIU Plan -->
+                <div class="relative bg-slate-50 dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-2xl p-5 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 font-extrabold text-xs">
+                                VIU
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">DTAC VIU PLAN</h3>
+                                <span id="txt-viuSub" class="text-[11px] text-amber-600 dark:text-amber-400 font-medium">စမတ်ခ 79 ဘတ်</span>
+                            </div>
+                        </div>
+
+                        <!-- Dial Code Box -->
+                        <div class="bg-white dark:bg-slate-900/90 rounded-xl p-3 border border-slate-200 dark:border-slate-800 space-y-2 mb-3 shadow-sm">
+                            <div class="flex justify-between items-center text-xs">
+                                <span id="txt-viuCodeLabel" class="text-slate-500 dark:text-slate-400">စမတ်ရန် ကုဒ်:</span>
+                                <div class="flex items-center gap-1.5">
+                                    <code class="bg-slate-100 dark:bg-slate-950 px-2 py-1 rounded-md text-amber-600 dark:text-amber-400 font-mono font-bold text-xs border border-slate-200 dark:border-slate-800 select-all">*900*7432#</code>
+                                    <a href="tel:*900*7432#" class="p-1 rounded-md bg-amber-500/20 text-amber-600 dark:text-amber-300 hover:bg-amber-500/30 transition" title="Dial Code">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex justify-between items-center text-xs">
+                                <span id="txt-viuVpnLabel" class="text-slate-600 dark:text-slate-300">VPN ဖိုး 50 ဘတ် ပေါင်း:</span>
+                                <span id="txt-viuTotalVal" class="font-bold text-slate-800 dark:text-slate-200 text-sm">~ 130 ဘတ် / လ</span>
+                            </div>
+                        </div>
+
+                        <!-- Speed Badge -->
+                        <div class="flex items-center gap-2 text-xs bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/60 rounded-xl px-3 py-2 text-slate-700 dark:text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 dark:text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span><span class="txt-speedLabel">လိုင်းအား:</span> <strong id="txt-viuSpeedVal" class="font-bold text-amber-600 dark:text-amber-300">15 Mbps သာ ရရှိမည်</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots Section (မီးအလင်းတန်းပြေးနေသော ဘောင်ကွပ် Animation) -->
+        <div class="w-full bg-white/95 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl transition-colors">
+            <h2 id="txt-screenshotsTitle" class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald-500 dark:text-emerald-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                App ပုံစံနမူနာများ
+            </h2>
+            <div class="grid grid-cols-2 gap-4 sm:gap-5">
+                
+                <!-- Image 1 with Running Light Border -->
+                <div class="neon-border-beam group bg-slate-200 dark:bg-slate-950">
+                    <div class="neon-border-inner bg-slate-100 dark:bg-[#030712] flex items-center justify-center min-h-[220px]">
+                        <!--  -->
+                        <img 
+                            src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/active1.png" 
+                            alt="Active VPN Screenshot 1" 
+                            referrerpolicy="no-referrer"
+                            onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/active1.png')"
+                            class="w-full h-auto object-cover group-hover:scale-105 transition duration-500 rounded-2xl"
+                        />
+                    </div>
+                </div>
+
+                <!-- Image 2 with Running Light Border -->
+                <div class="neon-border-beam neon-border-beam-alt group bg-slate-200 dark:bg-slate-950">
+                    <div class="neon-border-inner bg-slate-100 dark:bg-[#030712] flex items-center justify-center min-h-[220px]">
+                        <!--  -->
+                        <img 
+                            src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/active2.png" 
+                            alt="Active VPN Screenshot 2" 
+                            referrerpolicy="no-referrer"
+                            onerror="handleImgError(this, 'https://cdn.jsdelivr.net/gh/VPS-SCRIPT/activevpn-premium@main/PNG/active2.png')"
+                            class="w-full h-auto object-cover group-hover:scale-105 transition duration-500 rounded-2xl"
+                        />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Fixed Bottom Footer (အပေါ်အောက် Scroll ဆွဲလျှင်လိုက်မပါဘဲ အောက်ခြေတွင် အမြဲရှိနေမည့် Copyright Footer) -->
+    <footer class="fixed bottom-0 left-0 right-0 z-30 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800/80 py-2.5 px-4 text-center text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 shadow-xl transition-colors">
+        <div class="max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
+            <div class="flex items-center gap-1.5 font-bold text-slate-700 dark:text-slate-300">
+                <!--  -->
+                <img 
+                    src="https://raw.githubusercontent.com/VPS-SCRIPT/activevpn-premium/main/PNG/1787574190521.png" 
+                    alt="Logo" 
+                    class="w-3.5 h-3.5 rounded object-cover" 
+                />
+                <span id="txt-footerBrand">Active VPN Premium</span>
+            </div>
+            <p id="txt-copyright">© 2026 Active VPN Premium. မူပိုင်ခွင့်များအားလုံး လက်ဝယ်ရှိသည်။</p>
+        </div>
+    </footer>
+
+    <!-- Floating Dark / Light Mode Action Button (Fixed Footer ၏ အပေါ်ဘက် ညာဘက်အောက်ခြေတွင် ထားရှိသည်) -->
+    <button 
+        id="themeToggleBtn"
+        onclick="toggleTheme()" 
+        class="fixed bottom-14 sm:bottom-16 right-4 sm:right-6 z-40 w-11 h-11 rounded-full bg-white/95 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 shadow-2xl shadow-emerald-500/25 backdrop-blur-xl flex items-center justify-center text-slate-700 dark:text-slate-200 hover:scale-110 active:scale-95 hover:border-emerald-500/60 transition-all duration-200 group"
+        title="Theme ပြောင်းရန်"
+        aria-label="Toggle Theme"
+    >
+        <!-- Sun Icon (Shown in Dark Mode) -->
+        <svg id="sunIcon" class="w-5 h-5 text-amber-400 hidden dark:block animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <!-- Moon Icon (Shown in Light Mode) -->
+        <svg id="moonIcon" class="w-5 h-5 text-indigo-600 block dark:hidden group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21.64 13a1 1 0 00-1.05-.14 8.05 8.05 0 01-3.37.73A8.15 8.15 0 019.08 5.49a8.59 8.59 0 01.25-2A1 1 0 008 2.36a10.14 10.14 0 1014 11.69 1 1 0 00-.36-1.05z"/>
+        </svg>
+    </button>
+
+    <!-- Popup Video Modal for Guides -->
+    <div id="planVideoModal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="w-full max-w-sm sm:max-w-md bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in duration-200">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/70">
+                <h4 id="planVideoTitle" class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>ဗီဒီယို ကြည့်ရှုခြင်း</span>
+                </h4>
+                <button 
+                    onclick="closePlanVideoModal()" 
+                    class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center transition text-sm font-bold"
+                    title="Close"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <!-- Video Player Container -->
+            <div class="relative bg-black aspect-[9/16] max-h-[65vh] flex items-center justify-center">
+                <video 
+                    id="planVideoPlayer" 
+                    controls 
+                    playsinline 
+                    preload="metadata"
+                    class="w-full h-full object-contain bg-black"
+                ></video>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3.5 bg-slate-50 dark:bg-slate-950/70 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+                <button 
+                    onclick="closePlanVideoModal()" 
+                    id="txt-modalCloseBtn"
+                    class="w-full py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 transition"
+                >
+                    ပိတ်မည်
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 100% Download Completed - Automatic Install Guide Modal -->
+    <div id="installModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="w-full max-w-sm bg-white dark:bg-slate-900 border border-emerald-500/40 rounded-3xl p-6 text-center shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            
+            <!-- Success Icon -->
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+
+            <h3 id="txt-installTitle" class="text-xl font-bold text-slate-900 dark:text-white mb-2">ဒေါင်းလုဒ် ပြီးဆုံးပါပြီ!</h3>
+            <p id="txt-installDesc" class="text-xs text-slate-600 dark:text-slate-300 mb-5 leading-relaxed">
+                အက်ပ်ကို စတင်အသုံးပြုရန် အောက်ပါအဆင့်အတိုင်း Install လုပ်ပေးပါ -
+            </p>
+
+            <!-- Step Guide -->
+            <div class="text-left bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 mb-5 space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                <div class="flex items-start gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center flex-shrink-0 text-[11px]">၁</span>
+                    <span id="txt-installStep1">ဖုန်းအပေါ်ဘား (Notification) မှ <strong>"Download complete"</strong> ကို နှိပ်ပါ (သို့မဟုတ် ဖုန်း File Manager ထဲမှ APK ကို ဖွင့်ပါ)။</span>
+                </div>
+                <div class="flex items-start gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center flex-shrink-0 text-[11px]">၂</span>
+                    <span id="txt-installStep2"><strong>"Blocked by Play Protect"</strong> ပေါ်လာပါက <strong>"More details"</strong> ကို နှိပ်ပြီး <strong>"Install anyway"</strong> ကို နှိပ်ပါ။</span>
+                </div>
+            </div>
+
+            <!-- Dismiss Button -->
+            <button 
+                onclick="closeInstallModal()" 
+                id="txt-installOkBtn"
+                class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-950/30 hover:brightness-110 active:scale-95 transition"
+            >
+                နားလည်ပါပြီ (အိုကေ)
+            </button>
+        </div>
+    </div>
+
+    <!-- Status Toast Modal -->
+    <div id="toast" class="hidden fixed bottom-14 sm:bottom-16 left-1/2 -translate-x-1/2 bg-emerald-500 text-slate-950 text-xs font-bold px-5 py-2.5 rounded-full shadow-2xl transition-opacity duration-300 z-50 whitespace-nowrap">
+        လင့်ခ် ကူးယူပြီးပါပြီ!
+    </div>
+
+    <!-- JavaScript Translations & Application Logic -->
+    <script>
+        const WORKER_API_URL = "https://activevpn-apk.activevpn2026.workers.dev";
+        let isDownloading = false;
+        let lastDownloadedBlobUrl = null;
+        let currentLang = 'my'; // Default language: Myanmar
+
+        // Multi-language Dictionary (မြန်မာ / ไทย / English)
+        const i18n = {
+            my: {
+                flag: '🇲🇲',
+                label: 'မြန်မာ',
+                headerSub: 'တရားဝင် ဝက်ဘ်ဆိုက်',
+                versionBadge: '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>ဗားရှင်း 1.0 (APK)',
+                dlCountLabel: 'ဒေါင်းလုဒ်အကြိမ်ရေ:',
+                dlCountUnit: 'ကြိမ်',
+                videoGuidesHeader: 'လမ်းညွှန် ဗီဒီယိုများ (နှိပ်၍ကြည့်ရန်)',
+                vid1Title: 'Dtac Social စမတ်နည်း Video',
+                vid1Sub: 'လိုင်းအား 100+ Mbps ပက်ကေ့ချ်',
+                vid2Title: 'Dtac VIU စမတ်နည်း Video',
+                vid2Sub: 'စမတ်ခ 79 ဘတ် သက်သာပက်ကေ့ချ်',
+                vid3Title: 'မန်ဘာ၀င်နည်းနဲ့ ဒေါင်းလုတ်ဆွဲနည်း Video',
+                vid3Sub: 'အကောင့်ဖွင့်နည်းနှင့် အသုံးပြုနည်း အပြည့်အစုံ',
+                watchBtn: 'ကြည့်မည်',
+                downloadBtn: 'APK ဒေါင်းလုဒ်ဆွဲရန်',
+                genLink: 'လုံခြုံသော လင့်ခ် ထုတ်ယူနေသည်...',
+                downloading: 'ဖိုင်ကို ဒေါင်းလုဒ်ဆွဲနေသည်...',
+                dlComplete: '✓ ဒေါင်းလုဒ် ပြီးဆုံးပါပြီ!',
+                dlSuccess: 'ဒေါင်းလုဒ် အောင်မြင်ပါသည် ✓',
+                dlAgain: 'ထပ်မံ ဒေါင်းလုဒ်ဆွဲရန်',
+                dlRetry: 'ပြန်လည် ကြိုးစားရန်',
+                linkExpiry: '* လင့်ခ်သက်တမ်း ၃ မိနစ်',
+                copyLinkBtn: 'ဝက်ဘ်ဆိုက် လင့်ခ် ကူးယူရန်',
+                linkCopied: 'လင့်ခ် ကူးယူပြီးပါပြီ!',
+                copiedBtn: 'ကူးယူပြီး ✓',
+                plansTitle: 'DTAC အင်တာနက် ပက်ကေ့ချ်များ',
+                plansSub: 'Active VPN ဖြင့် တွဲဖက်အသုံးပြုရန် အထူးသင့်လျော်သော Plan များ',
+                socialBadge: 'သုံးဖို့ အကြံပြု ⭐',
+                socialSub: 'Dtac App မှ စမတ်ရန်',
+                social1mLabel: '၁ လ သက်တမ်း:',
+                social1mVal: '135 ဘတ်',
+                social3mLabel: '၃ လ သက်တမ်း:',
+                social3mVal: '237 ဘတ် (ပိုတန်)',
+                socialVpnLabel: 'VPN ဖိုး 50 ဘတ် ပေါင်း:',
+                socialTotalVal: '~ 130 ဘတ် / လ',
+                speedLabel: 'လိုင်းအား:',
+                socialSpeedVal: '100+ Mbps အထိ ရရှိ',
+                viuSub: 'စမတ်ခ 79 ဘတ်',
+                viuCodeLabel: 'စမတ်ရန် ကုဒ်:',
+                viuVpnLabel: 'VPN ဖိုး 50 ဘတ် ပေါင်း:',
+                viuTotalVal: '~ 130 ဘတ် / လ',
+                viuSpeedVal: '15 Mbps သာ ရရှိမည်',
+                screenshotsTitle: 'App ပုံစံနမူနာများ',
+                modalVideoWatch: 'ဗီဒီယို ကြည့်ရှုခြင်း',
+                modalClose: 'ပိတ်မည်',
+                installTitle: 'ဒေါင်းလုဒ် ပြီးဆုံးပါပြီ!',
+                installDesc: 'အက်ပ်ကို စတင်အသုံးပြုရန် အောက်ပါအဆင့်အတိုင်း Install လုပ်ပေးပါ -',
+                installStep1: 'ဖုန်းအပေါ်ဘား (Notification) မှ <strong>"Download complete"</strong> ကို နှိပ်ပါ (သို့မဟုတ် ဖုန်း File Manager ထဲမှ APK ကို ဖွင့်ပါ)။',
+                installStep2: '<strong>"Blocked by Play Protect"</strong> ပေါ်လာပါက <strong>"More details"</strong> ကို နှိပ်ပြီး <strong>"Install anyway"</strong> ကို နှိပ်ပါ။',
+                installOk: 'နားလည်ပါပြီ (အိုကေ)',
+                footerBrand: 'Active VPN Premium အဖွဲ့',
+                copyright: '© 2026 Active VPN Premium. မူပိုင်ခွင့်များအားလုံး လက်ဝယ်ရှိသည်။'
+            },
+            th: {
+                flag: '🇹🇭',
+                label: 'ไทย',
+                headerSub: 'เว็บไซต์อย่างเป็นทางการ',
+                versionBadge: '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>เวอร์ชัน 1.0 (APK)',
+                dlCountLabel: 'จำนวนดาวน์โหลด:',
+                dlCountUnit: 'ครั้ง',
+                videoGuidesHeader: 'วิดีโอแนะนำวิธีใช้งาน (คลิกเพื่อดู)',
+                vid1Title: 'วิธีสมัคร Dtac Social (วิดีโอ)',
+                vid1Sub: 'เน็ตความเร็ว 100+ Mbps ไม่อั้น',
+                vid2Title: 'วิธีสมัคร Dtac VIU (วิดีโอ)',
+                vid2Sub: 'ค่าสมัครเพียง 79 บาท สุดประหยัด',
+                vid3Title: 'วิธีสมัครสมาชิกและดาวน์โหลด (วิดีโอ)',
+                vid3Sub: 'คู่มือการเปิดบัญชีและใช้งานฉบับสมบูรณ์',
+                watchBtn: 'ดูเลย',
+                downloadBtn: 'ดาวน์โหลด APK',
+                genLink: 'กำลังสร้างลิงก์ที่ปลอดภัย...',
+                downloading: 'กำลังดาวน์โหลดไฟล์ APK...',
+                dlComplete: '✓ ดาวน์โหลดเสร็จสิ้น!',
+                dlSuccess: 'ดาวน์โหลดสำเร็จ ✓',
+                dlAgain: 'ดาวน์โหลดอีกครั้ง',
+                dlRetry: 'ลองใหม่อีกครั้ง',
+                linkExpiry: '* ลิงก์มีอายุ 3 นาที',
+                copyLinkBtn: 'คัดลอกลิงก์เว็บไซต์',
+                linkCopied: 'คัดลอกลิงก์แล้ว!',
+                copiedBtn: 'คัดลอกแล้ว ✓',
+                plansTitle: 'แพ็กเกจเน็ต DTAC ที่แนะนำ',
+                plansSub: 'แพ็กเกจอินเทอร์เน็ตที่เหมาะที่สุดสำหรับใช้งานร่วมกับ Active VPN',
+                socialBadge: 'แนะนำให้ใช้ ⭐',
+                socialSub: 'สมัครผ่านแอป Dtac',
+                social1mLabel: 'อายุการใช้งาน 1 เดือน:',
+                social1mVal: '135 บาท',
+                social3mLabel: 'อายุการใช้งาน 3 เดือน:',
+                social3mVal: '237 บาท (คุ้มกว่า)',
+                socialVpnLabel: 'รวมค่า VPN 50 บาท:',
+                socialTotalVal: '~ 130 บาท / เดือน',
+                speedLabel: 'ความเร็ว:',
+                socialSpeedVal: 'สูงสุด 100+ Mbps',
+                viuSub: 'ค่าสมัคร 79 บาท',
+                viuCodeLabel: 'รหัสสมัคร:',
+                viuVpnLabel: 'รวมค่า VPN 50 บาท:',
+                viuTotalVal: '~ 130 บาท / เดือน',
+                viuSpeedVal: 'จำกัดที่ 15 Mbps',
+                screenshotsTitle: 'ภาพตัวอย่างภายในแอป',
+                modalVideoWatch: 'กำลังรับชมวิดีโอ',
+                modalClose: 'ปิดหน้าต่าง',
+                installTitle: 'ดาวน์โหลดเสร็จสมบูรณ์!',
+                installDesc: 'โปรดทำตามขั้นตอนด้านล่างเพื่อติดตั้งแอปพลิเคชัน:',
+                installStep1: 'แตะที่ <strong>"Download complete"</strong> บนแถบแจ้งเตือนด้านบน (หรือเปิดไฟล์ APK ใน File Manager)',
+                installStep2: 'หากมีข้อความแจ้งเตือน <strong>"Blocked by Play Protect"</strong> ให้แตะ <strong>"More details"</strong> แล้วเลือก <strong>"Install anyway"</strong>',
+                installOk: 'เข้าใจแล้ว (ตกลง)',
+                footerBrand: 'ทีมงาน Active VPN Premium',
+                copyright: '© 2026 Active VPN Premium. สงวนลิขสิทธิ์ทั้งหมด'
+            },
+            en: {
+                flag: '🇬🇧',
+                label: 'English',
+                headerSub: 'Official Portal',
+                versionBadge: '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Version 1.0 (APK)',
+                dlCountLabel: 'Total Downloads:',
+                dlCountUnit: 'times',
+                videoGuidesHeader: 'Guide Videos (Click to watch)',
+                vid1Title: 'Dtac Social Setup Video',
+                vid1Sub: '100+ Mbps High-Speed Package',
+                vid2Title: 'Dtac VIU Setup Video',
+                vid2Sub: 'Budget 79 THB Package',
+                vid3Title: 'Membership & Download Guide Video',
+                vid3Sub: 'Complete Account Setup & Usage Guide',
+                watchBtn: 'Watch',
+                downloadBtn: 'Download APK',
+                genLink: 'Generating secure link...',
+                downloading: 'Downloading APK file...',
+                dlComplete: '✓ Download Completed!',
+                dlSuccess: 'Download Successful ✓',
+                dlAgain: 'Download Again',
+                dlRetry: 'Retry Download',
+                linkExpiry: '* Link expires in 3 mins',
+                copyLinkBtn: 'Copy Website Link',
+                linkCopied: 'Link copied to clipboard!',
+                copiedBtn: 'Copied ✓',
+                plansTitle: 'DTAC Internet Packages',
+                plansSub: 'Recommended data packages to use with Active VPN',
+                socialBadge: 'Recommended ⭐',
+                socialSub: 'Subscribe via Dtac App',
+                social1mLabel: '1 Month Validity:',
+                social1mVal: '135 THB',
+                social3mLabel: '3 Months Validity:',
+                social3mVal: '237 THB (Best Value)',
+                socialVpnLabel: 'VPN 50 THB Included:',
+                socialTotalVal: '~ 130 THB / mo',
+                speedLabel: 'Speed:',
+                socialSpeedVal: 'Up to 100+ Mbps',
+                viuSub: 'Fee: 79 THB',
+                viuCodeLabel: 'USSD Dial Code:',
+                viuVpnLabel: 'VPN 50 THB Included:',
+                viuTotalVal: '~ 130 THB / mo',
+                viuSpeedVal: 'Capped at 15 Mbps',
+                screenshotsTitle: 'App Screenshots',
+                modalVideoWatch: 'Watching Video',
+                modalClose: 'Close',
+                installTitle: 'Download Completed!',
+                installDesc: 'Follow the steps below to install the application:',
+                installStep1: 'Tap <strong>"Download complete"</strong> from the top notification bar (or open the APK in File Manager).',
+                installStep2: 'If <strong>"Blocked by Play Protect"</strong> appears, tap <strong>"More details"</strong> and select <strong>"Install anyway"</strong>.',
+                installOk: 'Got it (OK)',
+                footerBrand: 'Active VPN Premium Official',
+                copyright: '© 2026 Active VPN Premium. All rights reserved.'
+            }
+        };
+
+        // Language Dropdown Controller
+        function toggleLangDropdown() {
+            const menu = document.getElementById('langDropdownMenu');
+            const chevron = document.getElementById('langChevron');
+            menu.classList.toggle('hidden');
+            chevron.classList.toggle('rotate-180');
+        }
+
+        function selectLang(lang) {
+            switchLanguage(lang);
+            toggleLangDropdown();
+        }
+
+        // Close dropdown when tapping outside
+        document.addEventListener('click', (e) => {
+            const wrapper = document.getElementById('langDropdownWrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                const menu = document.getElementById('langDropdownMenu');
+                const chevron = document.getElementById('langChevron');
+                if (menu && !menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                    if (chevron) chevron.classList.remove('rotate-180');
+                }
+            }
+        });
+
+        // Switch Language Function
+        function switchLanguage(lang) {
+            if (!i18n[lang]) return;
+            currentLang = lang;
+
+            const t = i18n[lang];
+
+            // Update Current Dropdown Label
+            document.getElementById('currentLangFlag').textContent = t.flag;
+            document.getElementById('currentLangLabel').textContent = t.label;
+
+            // Update Checkmarks
+            ['my', 'th', 'en'].forEach(k => {
+                const chk = document.getElementById(`check-${k}`);
+                if (chk) {
+                    if (k === lang) chk.classList.remove('hidden');
+                    else chk.classList.add('hidden');
+                }
+            });
+
+            // Update Header & Badge Elements
+            document.getElementById('txt-headerSub').textContent = t.headerSub;
+            document.getElementById('txt-versionBadge').innerHTML = t.versionBadge;
+            document.getElementById('txt-dlCountLabel').textContent = t.dlCountLabel;
+            document.getElementById('txt-videoGuidesHeader').textContent = t.videoGuidesHeader;
+
+            // Update Video Guide Items
+            document.getElementById('txt-vid1Title').textContent = t.vid1Title;
+            document.getElementById('txt-vid1Sub').textContent = t.vid1Sub;
+            document.getElementById('txt-vid2Title').textContent = t.vid2Title;
+            document.getElementById('txt-vid2Sub').textContent = t.vid2Sub;
+            document.getElementById('txt-vid3Title').textContent = t.vid3Title;
+            document.getElementById('txt-vid3Sub').textContent = t.vid3Sub;
+
+            document.querySelectorAll('.txt-watchBtn').forEach(el => el.textContent = t.watchBtn);
+
+            // Update Download Button & Progress
+            if (!isDownloading) {
+                document.getElementById('btnText').textContent = t.downloadBtn;
+            }
+            document.getElementById('txt-progressStatus').textContent = t.downloading;
+            document.getElementById('txt-linkExpiryNotice').textContent = t.linkExpiry;
+            document.getElementById('copyBtnText').textContent = t.copyLinkBtn;
+
+            // Update SIM Plans
+            document.getElementById('txt-plansTitle').textContent = t.plansTitle;
+            document.getElementById('txt-plansSub').textContent = t.plansSub;
+            document.getElementById('txt-socialBadge').textContent = t.socialBadge;
+            document.getElementById('txt-socialSub').textContent = t.socialSub;
+            document.getElementById('txt-social1mLabel').textContent = t.social1mLabel;
+            document.getElementById('txt-social1mVal').textContent = t.social1mVal;
+            document.getElementById('txt-social3mLabel').textContent = t.social3mLabel;
+            document.getElementById('txt-social3mVal').textContent = t.social3mVal;
+            document.getElementById('txt-socialVpnLabel').textContent = t.socialVpnLabel;
+            document.getElementById('txt-socialTotalVal').textContent = t.socialTotalVal;
+            document.getElementById('txt-socialSpeedVal').textContent = t.socialSpeedVal;
+
+            document.getElementById('txt-viuSub').textContent = t.viuSub;
+            document.getElementById('txt-viuCodeLabel').textContent = t.viuCodeLabel;
+            document.getElementById('txt-viuVpnLabel').textContent = t.viuVpnLabel;
+            document.getElementById('txt-viuTotalVal').textContent = t.viuTotalVal;
+            document.getElementById('txt-viuSpeedVal').textContent = t.viuSpeedVal;
+            document.querySelectorAll('.txt-speedLabel').forEach(el => el.textContent = t.speedLabel);
+
+            // Update Screenshots & Modals
+            document.getElementById('txt-screenshotsTitle').childNodes[2].nodeValue = " " + t.screenshotsTitle;
+            document.getElementById('txt-modalCloseBtn').textContent = t.modalClose;
+
+            document.getElementById('txt-installTitle').textContent = t.installTitle;
+            document.getElementById('txt-installDesc').textContent = t.installDesc;
+            document.getElementById('txt-installStep1').innerHTML = t.installStep1;
+            document.getElementById('txt-installStep2').innerHTML = t.installStep2;
+            document.getElementById('txt-installOkBtn').textContent = t.installOk;
+
+            // Update Footer
+            document.getElementById('txt-footerBrand').textContent = t.footerBrand;
+            document.getElementById('txt-copyright').textContent = t.copyright;
+
+            // Re-render stats text with current language unit
+            fetchExactDownloadStats();
+        }
+
+        // Trigger Video from Guide List with Current Language Title
+        function triggerPlanVideo(type) {
+            const t = i18n[currentLang];
+            if (type === 'social') {
+                openPlanVideoModal(t.vid1Title, 'https://github.com/VPS-SCRIPT/DTAC-VIU-/releases/download/V1.0/Social.mp4');
+            } else if (type === 'viu') {
+                openPlanVideoModal(t.vid2Title, 'https://github.com/VPS-SCRIPT/DTAC-VIU-/releases/download/V1.0/VIU.mp4');
+            } else if (type === 'guide') {
+                openPlanVideoModal(t.vid3Title, 'https://github.com/VPS-SCRIPT/ActiveVPN-APK/releases/download/v1.0-video/guide.mp4');
+            }
+        }
+
+        // Theme Toggle Logic (Floating Button)
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+        }
+
+        // Fetch EXACT Download Stats from Worker
+        async function fetchExactDownloadStats() {
+            const countEl = document.getElementById("downloadCountText");
+            const t = i18n[currentLang];
+            try {
+                const res = await fetch(`${WORKER_API_URL}/api/stats`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const realCount = Number(data.download_count ?? 0);
+                    countEl.textContent = `${realCount.toLocaleString()} ${t.dlCountUnit}`;
+                    return;
+                }
+            } catch (e) {
+                console.warn("Could not fetch real download stats:", e);
+            }
+            countEl.textContent = `0 ${t.dlCountUnit}`;
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            fetchExactDownloadStats();
+        });
+
+        // Plan Video Modal Controller
+        function openPlanVideoModal(title, videoUrl) {
+            const modal = document.getElementById("planVideoModal");
+            const player = document.getElementById("planVideoPlayer");
+            const titleEl = document.getElementById("planVideoTitle");
+
+            titleEl.querySelector("span").textContent = title;
+            player.src = videoUrl;
+            modal.classList.remove("hidden");
+            player.play().catch(() => {});
+        }
+
+        function closePlanVideoModal() {
+            const modal = document.getElementById("planVideoModal");
+            const player = document.getElementById("planVideoPlayer");
+
+            player.pause();
+            player.removeAttribute("src");
+            player.load();
+            modal.classList.add("hidden");
+        }
+
+        // Handle Secure Stream Download with Live Progress
+        async function handleDownloadClick() {
+            if (isDownloading) return;
+
+            const t = i18n[currentLang];
+            const btn = document.getElementById("startDownloadBtn");
+            const btnText = document.getElementById("btnText");
+            const iconDownload = document.getElementById("btnIconDownload");
+            const iconSpinner = document.getElementById("btnIconSpinner");
+            const progressSection = document.getElementById("progressSection");
+            const progressBarFill = document.getElementById("progressBarFill");
+            const progressPercent = document.getElementById("progressPercent");
+            const progressStatus = document.getElementById("progressStatus");
+            const progressSize = document.getElementById("progressSize");
+
+            try {
+                isDownloading = true;
+                btn.disabled = true;
+                iconDownload.classList.add("hidden");
+                iconSpinner.classList.remove("hidden");
+                btnText.textContent = t.genLink;
+                progressSection.classList.remove("hidden");
+                progressBarFill.style.width = "0%";
+                progressPercent.textContent = "0%";
+
+                // 1. Worker မှ ၃ မိနစ် Token ရယူခြင်း
+                const tokenRes = await fetch(`${WORKER_API_URL}/api/generate-link`, { 
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" }
+                });
+                
+                if (!tokenRes.ok) {
+                    throw new Error("Worker download link fetch failed.");
+                }
+
+                const tokenData = await tokenRes.json();
+                const downloadUrl = tokenData.download_url;
+
+                btnText.textContent = t.downloading;
+                progressStatus.innerHTML = `<span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span></span> <span>${t.downloading}</span>`;
+
+                // 2. Stream Data ဖတ်ယူပြီး ရာခိုင်နှုန်း တိကျစွာ ပြသခြင်း
+                const response = await fetch(downloadUrl);
+                if (!response.ok) {
+                    const errTxt = await response.text();
+                    throw new Error(errTxt || "Download failed.");
+                }
+
+                const contentLengthHeader = response.headers.get("Content-Length");
+                const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;
+                
+                const reader = response.body.getReader();
+                let receivedBytes = 0;
+                const chunks = [];
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    chunks.push(value);
+                    receivedBytes += value.length;
+
+                    if (totalBytes > 0) {
+                        const percent = Math.min(100, Math.round((receivedBytes / totalBytes) * 100));
+                        progressBarFill.style.width = percent + "%";
+                        progressPercent.textContent = percent + "%";
+                        
+                        const mbLoaded = (receivedBytes / (1024 * 1024)).toFixed(1);
+                        const mbTotal = (totalBytes / (1024 * 1024)).toFixed(1);
+                        progressSize.textContent = `${mbLoaded} MB / ${mbTotal} MB`;
+                    } else {
+                        const mbLoaded = (receivedBytes / (1024 * 1024)).toFixed(1);
+                        progressSize.textContent = `${mbLoaded} MB`;
+                        progressBarFill.style.width = "90%";
+                        progressPercent.textContent = "...";
+                    }
+                }
+
+                // 3. ၁၀၀% ပြီးဆုံးမှု - ဖိုင်ကို သိမ်းဆည်းပြီး Install Modal ဖွင့်ပေးခြင်း
+                progressBarFill.style.width = "100%";
+                progressPercent.textContent = "100%";
+                progressStatus.innerHTML = `✓ ${t.dlComplete}`;
+                btnText.textContent = t.dlSuccess;
+
+                const blob = new Blob(chunks, { type: "application/vnd.android.package-archive" });
+                lastDownloadedBlobUrl = URL.createObjectURL(blob);
+
+                const a = document.createElement("a");
+                a.href = lastDownloadedBlobUrl;
+                a.download = "Active_VPN_Premium.apk";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                // Download Count Update
+                fetchExactDownloadStats();
+
+                // 100% ပြည့်ပြီးသည်နှင့် Install Guide Modal ဖွင့်ပေးခြင်း
+                setTimeout(() => {
+                    showInstallModal();
+                }, 600);
+
+                setTimeout(() => {
+                    btnText.textContent = t.dlAgain;
+                    btn.disabled = false;
+                    iconDownload.classList.remove("hidden");
+                    iconSpinner.classList.add("hidden");
+                    isDownloading = false;
+                }, 3000);
+
+            } catch (err) {
+                console.error(err);
+                progressStatus.innerHTML = `<span class="text-rose-400">${err.message || "Download error"}</span>`;
+                btnText.textContent = t.dlRetry;
+                btn.disabled = false;
+                iconDownload.classList.remove("hidden");
+                iconSpinner.classList.add("hidden");
+                isDownloading = false;
+            }
+        }
+
+        // Install Modal Controller
+        function showInstallModal() {
+            const modal = document.getElementById("installModal");
+            modal.classList.remove("hidden");
+        }
+
+        function closeInstallModal() {
+            const modal = document.getElementById("installModal");
+            modal.classList.add("hidden");
+        }
+
+        // Image Fallback
+        function handleImgError(imgElement, fallbackUrl) {
+            if (!imgElement.dataset.retried) {
+                imgElement.dataset.retried = "true";
+                imgElement.src = fallbackUrl;
+            }
+        }
+
+        // Share Link Function
+        function copyShareLink() {
+            const t = i18n[currentLang];
+            const tempInput = document.createElement("input");
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast(t.linkCopied);
+        }
+
+        function showToast(msg) {
+            const t = i18n[currentLang];
+            const toast = document.getElementById("toast");
+            const btnText = document.getElementById("copyBtnText");
+            if (msg) toast.textContent = msg;
+            
+            toast.classList.remove("hidden");
+            btnText.textContent = t.copiedBtn;
+
+            setTimeout(function() {
+                toast.classList.add("hidden");
+                btnText.textContent = t.copyLinkBtn;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
